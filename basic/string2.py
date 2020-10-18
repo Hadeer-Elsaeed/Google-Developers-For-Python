@@ -16,15 +16,13 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  # +++your code here+++
-  if len(s)>3:
-        if s.endswith('ing'):
-              return s+'ly'
-        else:
-              return s+'ing'
-  else:
-        return s
-        
+  """
+  function has a string parameter if length of string more than 3 it adds "ing" 
+  to its end if it has "ing" in its end we add "ly" instead and return this string
+  if length of string less than 3 we return the string
+  """
+  return f"{s}{'ly' if s.endswith('ing') else 'ing'}" if len(s) > 3 else s
+  
 
 
 # E. not_bad
@@ -36,11 +34,15 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  if s.find('not') + 3 <= s.find('bad'):
-        return s.replace(s[s.find('not'):s.find('bad')+3], 'good')
+  """
+  function takes a string parameter and get substrings "not" & "bad"
+  if "not" appears before "bad" it replaces the sentence "not .. bad" with "good"
+  and return resulting string if not it return the same string
+  """
+  if s.find('not') + len('not') <= s.find('bad'):
+      return s.replace(s[s.find('not'):s.find('bad') + len('not')] , 'good')
   else:
-        return s
+      return s
 
 
 
@@ -52,17 +54,19 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  # +++your code here+++
+  """
+  function has two strings as parameters a , b it returns 
+  front half of a + front half of b + back half of a + back half of b
+  if length of a or b odd the front half increase one of back half
+  """
   len_a = len(a)//2
   len_b = len(b)//2
   if len(a)%2 == 0 and len(b)%2 == 0:
-        return a[:len_a] + b[:len_b] + a[len_a:] + b[len_b:] 
+      return f"{a[:len_a]}{b[:len_b]}{a[len_a:]}{b[len_b:]}" 
   elif len(a)%2 != 0 and len(b) !=0:
-        return a[:len_a+1] + b[:len_b+1] +a[len_a+1:]+b[len_b+1:]
-  elif len(a)%2 == 0 and len(b) !=0:
-        return a[:len_a] + b[:len_b+1] +a[len_a:]+b[len_b+1:]
+      return a[:len_a+1] + b[:len_b+1] +a[len_a+1:]+b[len_b+1:]
   else:
-        return a[:len_a+1] + b[:len_b] +a[len_a+1:]+b[len_b:]
+      return a[:len_a] + b[:len_b+1] +a[len_a:]+b[len_b+1:]
 
         
      
@@ -101,6 +105,7 @@ def main():
   test(front_back('abcd', 'xy'), 'abxcdy')
   test(front_back('abcde', 'xyz'), 'abcxydez')
   test(front_back('Kitten', 'Donut'), 'KitDontenut')
+  test(front_back('abc', 'xyz'), 'abxycz')
 
 if __name__ == '__main__':
   main()
