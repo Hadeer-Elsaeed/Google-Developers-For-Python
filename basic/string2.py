@@ -62,7 +62,7 @@ def front_back(a, b):
   len_a = len(a)//2
   len_b = len(b)//2
   if len(a)%2 == 0 and len(b)%2 == 0:
-      return f"{a[:len_a]}{b[:len_b]}{a[len_a:]}{b[len_b:]}" 
+        return f"{a[:len_a]}{b[:len_b]}{a[len_a:]}{b[len_b:]}" 
   elif len(a)%2 != 0 and len(b) !=0:
       return a[:len_a+1] + b[:len_b+1] +a[len_a+1:]+b[len_b+1:]
   else:
