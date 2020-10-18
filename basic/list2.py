@@ -12,13 +12,22 @@
 # all adjacent == elements have been reduced to a single element,
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
 # modify the passed in list.
-def remove_adjacent(nums):
-    # +++your code here+++
-    new_list = []
-    for i in nums:
-        if i not in new_list:
-            new_list.append(i)
-    return new_list
+def remove_adjacent(numbers):
+    """[function return list of unique numbers]
+
+    Args:
+        numbers ([list]): [list of numbers]
+
+    Returns:
+        [list]: [list of numbers where numbers not duplicated]
+    """
+    return list(set(numbers))
+
+    # new_list = []
+    # for i in numbers:
+    #     if i not in new_list:
+    #         new_list.append(i)
+    # return new_list
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
@@ -26,7 +35,15 @@ def remove_adjacent(nums):
 # Ideally, the solution should work in "linear" time, making a single
 # pass of both lists.
 def linear_merge(list1, list2):
-    # +++your code here+++
+    """[function return merged list of all elements in sorted order]
+
+    Args:
+        list1 ([list]): [description]
+        list2 ([list]): [description]
+
+    Returns:
+        [list]: [list merged with two sorted lists]
+    """
     return sorted(list1 + list2)
 
 
