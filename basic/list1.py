@@ -21,12 +21,20 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-  # +++your code here+++
-  sum = 0
-  for i in words:
-    if len(i) >= 2 and i[0] == i[-1]:
-          sum +=1
-  return sum    
+	"""[ function count strings that first and last characters are the same. ]
+
+	Args:
+		words ([list]): [list of strings]
+
+	Returns:
+		[int]: [count number of strings where string length 2 or more ]
+  	"""
+   
+	sum = 0
+	for i in words:
+		if len(i) >= 2 and i[0] == i[-1]:
+			sum += 1
+	return sum    
 
 # B. front_x
 # Given a list of strings, return a list with the strings
@@ -36,18 +44,19 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-  # +++your code here+++
-    list1 = []
-    list2 = []
-    for i in words:
-      if (i.startswith('x')):
-        list1.append(i)
-      else:
-        list2.append(i)
+	"""[ function that sort list of strings except group all the strings that begin with 'x' first. ]
 
-    return sorted(list1) + sorted(list2)
+	Args:
+		words ([list]): [list of strings ]
+
+	Returns:
+		[list]: [list of strings in sorted order]
+	"""
+	list1,list2 = [],[]
+	for i in words:
+		list1.append(i) if i.startswith('x') else  list2.append(i)          
+	return sorted(list1) + sorted(list2)
                 
-
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -56,11 +65,16 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-  # +++your code here+++
-  def last(a):
-        return a[-1]
-  return sorted(tuples, key = last)
-  # return sorted(tuples,key = lambda x:x[-1])
+	"""[function return a list sorted in increasing order by the last element in each tuple.]
+
+	Args:
+		tuples ([list]): [list of non empty tuples]
+	"""
+	return sorted(tuples,key = lambda x:x[-1])
+#   def last(a):
+#         return a[-1]
+#   return sorted(tuples, key = last)
+	
 
 
 # Simple provided test() function used in main() to print

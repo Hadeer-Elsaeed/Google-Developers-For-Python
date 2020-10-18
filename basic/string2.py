@@ -16,13 +16,15 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  """
-  function has a string parameter if length of string more than 3 it adds "ing" 
-  to its end if it has "ing" in its end we add "ly" instead and return this string
-  if length of string less than 3 we return the string
-  """
-  return f"{s}{'ly' if s.endswith('ing') else 'ing'}" if len(s) > 3 else s
-  
+    """lasdkfj;asd kf
+
+    Args:
+        s (str): asdl;fkj asdf
+
+    Returns:
+        str: aldk fasldkfj
+    """
+    return f"{s}{'ly' if s.endswith('ing') else 'ing'}" if len(s) > 3 else s
 
 
 # E. not_bad
@@ -34,16 +36,12 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  """
-  function takes a string parameter and get substrings "not" & "bad"
-  if "not" appears before "bad" it replaces the sentence "not .. bad" with "good"
-  and return resulting string if not it return the same string
-  """
-  if s.find('not') + len('not') <= s.find('bad'):
-      return s.replace(s[s.find('not'):s.find('bad') + len('not')] , 'good')
-  else:
-      return s
-
+      not_index = s.find("not")
+      bad_index = s.find("bad")
+      if ("not" in s) and ("bad" in s) and (not_index < bad_index):
+            return s.replace(s[not_index : bad_index + len("bad")], "good")
+      else:
+            return s
 
 
 # F. front_back
@@ -53,59 +51,53 @@ def not_bad(s):
 # e.g. 'abcde', the front half is 'abc', the back half 'de'.
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
-def front_back(a, b):
-  """
-  function has two strings as parameters a , b it returns 
-  front half of a + front half of b + back half of a + back half of b
-  if length of a or b odd the front half increase one of back half
-  """
-  len_a = len(a)//2
-  len_b = len(b)//2
-  if len(a)%2 == 0 and len(b)%2 == 0:
-        return f"{a[:len_a]}{b[:len_b]}{a[len_a:]}{b[len_b:]}" 
-  elif len(a)%2 != 0 and len(b) !=0:
-      return a[:len_a+1] + b[:len_b+1] +a[len_a+1:]+b[len_b+1:]
-  else:
-      return a[:len_a] + b[:len_b+1] +a[len_a:]+b[len_b+1:]
 
-        
-     
-     
-  
-  
+
+def split_word(word):
+    len_word = len(word)
+    middle_index, remainder = len_word // 2, len_word % 2
+    middle_index = middle_index + 1 if remainder else middle_index
+    return word[:middle_index], word[middle_index:]
+
+
+def front_back(word_1, word_2):
+    word_1_front, word_1_back = split_word(word_1)
+    word_2_front, word_2_back = split_word(word_2)
+    return word_1_front + word_2_front + word_1_back + word_2_back
 
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-  if got == expected:
-    prefix = ' OK '
-  else:
-    prefix = '  X '
-  print ('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
+      if got == expected:
+            prefix = " OK "
+      else:
+            prefix = "  X "
+      print("%s got: %s expected: %s" % (prefix, repr(got), repr(expected)))
 
 
 # main() calls the above functions with interesting inputs,
 # using the above test() to check if the result is correct or not.
 def main():
-  print ('verbing')
-  test(verbing('hail'), 'hailing')
-  test(verbing('swiming'), 'swimingly')
-  test(verbing('do'), 'do')
+    print("verbing")
+    test(verbing("hail"), "hailing")
+    test(verbing("swiming"), "swimingly")
+    test(verbing("do"), "do")
 
-  print
-  print ('not_bad')
-  test(not_bad('This movie is not so bad'), 'This movie is good')
-  test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
-  test(not_bad('This tea is not hot'), 'This tea is not hot')
-  test(not_bad("It's bad yet not"), "It's bad yet not")
+    print
+    print("not_bad")
+    test(not_bad("This movie is not so bad"), "This movie is good")
+    test(not_bad("This dinner is not that bad!"), "This dinner is good!")
+    test(not_bad("This tea is not hot"), "This tea is not hot")
+    test(not_bad("It's bad yet not"), "It's bad yet not")
 
-  print
-  print ('front_back')
-  test(front_back('abcd', 'xy'), 'abxcdy')
-  test(front_back('abcde', 'xyz'), 'abcxydez')
-  test(front_back('Kitten', 'Donut'), 'KitDontenut')
-  test(front_back('abc', 'xyz'), 'abxycz')
+    print
+    print("front_back")
+    test(front_back("abcd", "xy"), "abxcdy")
+    test(front_back("abcde", "xyz"), "abcxydez")
+    test(front_back("Kitten", "Donut"), "KitDontenut")
+    test(front_back("abc", "xyz"), "abxycz")
 
-if __name__ == '__main__':
-  main()
+
+if __name__ == "__main__":
+    main()
